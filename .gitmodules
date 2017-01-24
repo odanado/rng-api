@@ -1,0 +1,3 @@
+[submodule "lib/QR-Database"]
+	path = lib/QR-Database
+	url = https://github.com/odanado/QR-Database
