@@ -1,0 +1,18 @@
+version: "2"
+services:
+    rng-api:
+        build: .
+        volumes:
+            - ./:/root/work
+        ports:
+            - 19937:19937
+        entrypoint:
+            - src/server.py
+    test:
+        build: .
+        volumes:
+            - ./:/root/work
+        ports:
+            - 19938:19937
+        entrypoint:
+            - src/server.py
