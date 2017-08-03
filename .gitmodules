@@ -1,0 +1,3 @@
+[submodule "SFMT-Database"]
+	path = SFMT-Database
+	url = https://github.com/odanado/SFMT-Database
