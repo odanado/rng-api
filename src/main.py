@@ -1,10 +1,15 @@
+import os
+import sys
 from time import time
-import boto3
-from gen7_rng import Gen7RNG
+
+VENDOR_PATH = os.environ['VENDOR_PATH']
+sys.path.append(VENDOR_PATH)
+
+import boto3  # NOQA
+from gen7_rng import Gen7RNG  # NOQA
 
 AWS_S3_BUCKET_NAME = 'pokemon-sfmt-binary-db'
 s3 = boto3.resource('s3')
-
 
 
 def _search(step, needles):
