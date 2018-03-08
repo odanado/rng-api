@@ -101,3 +101,4 @@ ENV/
 logs/
 lib/
 vendor
+lambda.zip
