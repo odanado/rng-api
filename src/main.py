@@ -7,7 +7,7 @@ sys.path.append(VENDOR_PATH)
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 import boto3  # NOQA
-from gen7_rng import Gen7RNG # NOQA
+from gen7_rng import Gen7RNG  # NOQA
 
 AWS_S3_BUCKET_NAME = 'pokemon-sfmt-binary-db'
 s3 = boto3.resource('s3')
@@ -24,15 +24,23 @@ def _search(step, needles):
     print(time() - start)
 
     gen7_rng = Gen7RNG(417)
-    results = gen7_rng.search_seed(needles, db)
+    seeds = gen7_rng.search_seed(needles, db)
     print(time() - start)
+    results = []
+    for seed in seeds:
+        result = {}
+        result['seed'] = '{:08x}'.format(seed)
+        result['encoded_needle'] = '{:08x}'.format(encoded_needle)
+        result['step'] = step
 
-    return results
+        results.append(result)
+
+    return {'results': results}
 
 
 def main(event, context):
-    needles = event['needle']
-    step = event['step']
+    needles = list(map(int, event['needle'].split(',')))
+    step = int(event['step'])
 
     return _search(step, needles)
 
@@ -40,4 +48,4 @@ def main(event, context):
 if __name__ == '__main__':
     step = 417
     needles = [15, 1, 13, 13, 1, 2, 3, 15, 2, 13]
-    _search(step, needles)
+    print(_search(step, needles))
