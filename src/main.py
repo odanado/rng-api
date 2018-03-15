@@ -2,13 +2,13 @@ import os
 import sys
 from time import time
 
-from gen7_rng import Gen7RNG
 
 if 'VENDOR_PATH' in os.environ:
     VENDOR_PATH = os.environ['VENDOR_PATH']
     sys.path.append(VENDOR_PATH)
 
 import boto3  # NOQA
+from src.gen7_rng import Gen7RNG  # NOQA
 
 AWS_S3_BUCKET_NAME = 'rng-api'
 s3 = boto3.resource('s3')
