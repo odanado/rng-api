@@ -2,14 +2,15 @@ import os
 import sys
 from time import time
 
-VENDOR_PATH = os.environ['VENDOR_PATH']
-sys.path.append(VENDOR_PATH)
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+from gen7_rng import Gen7RNG
+
+if 'VENDOR_PATH' in os.environ:
+    VENDOR_PATH = os.environ['VENDOR_PATH']
+    sys.path.append(VENDOR_PATH)
 
 import boto3  # NOQA
-from gen7_rng import Gen7RNG  # NOQA
 
-AWS_S3_BUCKET_NAME = 'pokemon-sfmt-binary-db'
+AWS_S3_BUCKET_NAME = 'rng-api'
 s3 = boto3.resource('s3')
 
 
@@ -23,7 +24,7 @@ def _search(step, needles):
     db = res['Body'].read()
     print(time() - start)
 
-    gen7_rng = Gen7RNG(417)
+    gen7_rng = Gen7RNG(step)
     seeds = gen7_rng.search_seed(needles, db)
     print(time() - start)
     results = []
