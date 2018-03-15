@@ -1,10 +1,11 @@
 # deploy
 ```bash
-export VENDOR_PATH=$PWD/vendor
-pip install Cython==0.27 -t ./vendor
-pip install -r requirements.txt -t ./vendor
+python3 -m venv venv
+source venv/bin/activate
+pip install Cython==0.27
+pip install -r requirements.txt
 ```
 
-``bash
-zip -r lambda.zip src vendor
+```bash
+./build.sh
 ```
