@@ -35,9 +35,9 @@ def _search(step, original_needles, fuzzy=False):
             result = {}
             result['seed'] = '{:08x}'.format(seed)
             result['encoded_needle'] = '{:08x}'.format(encoded_needle)
-            result['step'] = str(step)
+            result['step'] = step
             if fuzzy:
-                result['add'] = str((-add + 17) % 17)
+                result['add'] = (-add + 17) % 17
 
             results.append(result)
 
