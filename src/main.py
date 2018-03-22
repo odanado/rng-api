@@ -18,6 +18,7 @@ def _search(step, original_needles, fuzzy=False):
     results = []
 
     for add in range(17):
+        print('add', add)
         if not fuzzy and add != 0:
             continue
 
