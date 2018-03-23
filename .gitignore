@@ -102,3 +102,4 @@ logs/
 lib/
 vendor
 lambda.zip
+venv_mac

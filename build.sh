@@ -3,7 +3,7 @@
 mkdir -p .temp
 
 cp -r src .temp
-cp -r venv/lib64/python3.?/site-packages/ .temp/vendor
+cp -r venv/lib/python3.?/site-packages/ .temp/vendor
 
 cd .temp
 
