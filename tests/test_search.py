@@ -30,10 +30,7 @@ class TestSearch(unittest.TestCase):
         expect = {"results": [
             {"add": 15, "seed": "f9337724",
                 "encoded_needle": "07257578", "step": 1012},
-            {"add": 10, "seed": "53c58ec3",
-                "encoded_needle": "0d59b899", "step": 1012},
-            {"add": 10, "seed": "01919810",
-                "encoded_needle": "0d59b899", "step": 1012}]}
+        ]}
         self.assertEqual(expect, results)
 
     def test_usm_id_seed(self):
@@ -44,11 +41,5 @@ class TestSearch(unittest.TestCase):
         expect = {"results": [
             {"add": 0, "seed": "84550450",
                 "encoded_needle": "0dd53f07", "step": 1132},
-            {"add": 13, "seed": "765f81aa",
-                "encoded_needle": "13f28f42", "step": 1132},
-            {"add": 11, "seed": "1e300ec2",
-                "encoded_needle": "16ffde7e", "step": 1132},
-            {"add": 3, "seed": "1b19e915",
-                "encoded_needle": "093f4202", "step": 1132},
         ]}
         self.assertEqual(expect, results)
