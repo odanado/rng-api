@@ -14,11 +14,18 @@ s3 = boto3.resource('s3')
 
 
 def _search(step, original_needles, fuzzy=False):
+    threshold = 8
+    if fuzzy:
+        threshold = 10
+
+    if len(original_needles) < threshold:
+        raise ValueError(
+            'the number of the needle should be {} or more.'.format(threshold))
+
     gen7_rng = Gen7RNG(step)
     results = []
 
     for add in range(17):
-        print('add', add)
         if not fuzzy and add != 0:
             continue
         # あいまい検索でもadd全ては試さない
