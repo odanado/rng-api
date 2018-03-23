@@ -16,7 +16,7 @@ s3 = boto3.resource('s3')
 def _search(step, original_needles, fuzzy=False):
     threshold = 8
     if fuzzy:
-        threshold = 10
+        threshold = 9
 
     if len(original_needles) < threshold:
         raise ValueError(
