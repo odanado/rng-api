@@ -21,6 +21,9 @@ def _search(step, original_needles, fuzzy=False):
         print('add', add)
         if not fuzzy and add != 0:
             continue
+        # あいまい検索でもadd全ては試さない
+        if add not in [15, 16, 0, 1, 2]:
+            continue
 
         needles = [(x + add) % 17 for x in original_needles]
         encoded_needle = Gen7RNG.encode_needle(needles)
